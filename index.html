@@ -35,7 +35,7 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = '1430650392';
+    var serviceWorkerVersion = '2795792274';
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
@@ -60,22 +60,20 @@
     async function fetchPI (sessionId) {
 
       var myHeaders = new Headers();
-      myHeaders.append("Cookie", `JSESSIONID=CD4D841434EF20B3681CB257BEF2FC6F;`);
+      myHeaders.append("Cookie", `JSESSIONID=${sessionId};`);
       myHeaders.append("Accept", "*/*");
 
       var requestOptions = {
         method: 'GET',
         headers: myHeaders,
         redirect: 'follow',
-        credentials: "same-origin"
+        credentials: 'include'
       };
 
       await fetch("http://172.104.142.164:8080/sanarip-tamga/ws/rest/com.axelor.apps.sale.db.Declaration", requestOptions)
           .then(async response => {
 
-          console.log(111);
-console.log(sessionId);
-            await response.text().then(res => console.log(res));
+<!--            await response.text().then(res => console.log(res));-->
 
             const headers = response.headers;
 
