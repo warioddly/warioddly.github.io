@@ -15,7 +15,6 @@
     the `--base-href` argument provided to `flutter build`.
   -->
   <base href="/">
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -35,7 +34,7 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = '765138380';
+    var serviceWorkerVersion = '2664000185';
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
@@ -54,6 +53,42 @@
         return appRunner.runApp();
       });
     });
+
+
+
+    async function fetchPI (sessionId) {
+
+      console.log(document.cookie)
+      var myHeaders = new Headers();
+      myHeaders.append("Cookie", `JSESSIONID=${sessionId};`);
+      myHeaders.append("Accept", "*/*");
+
+      var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow',
+      };
+
+      await fetch("http://172.104.142.164:8080/sanarip-tamga/ws/rest/com.axelor.apps.sale.db.Declaration/", requestOptions)
+          .then(async response => {
+
+
+            await response.text().then(res => console.log(res));
+
+            const headers = response.headers;
+
+            headers.forEach((value, name) => {
+              console.log(`${name}: ${value}`);
+            });
+
+            
+          }).catch(error => {
+            console.error('Error fetching data:', error);
+          });
+
+      }
+
+
   </script>
 </body>
 </html>
