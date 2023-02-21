@@ -35,7 +35,7 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = '2794304136';
+    var serviceWorkerVersion = '1430650392';
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
@@ -68,10 +68,13 @@
         method: 'GET',
         headers: myHeaders,
         redirect: 'follow',
+        credentials: 'include'
       };
 
       await fetch("http://172.104.142.164:8080/sanarip-tamga/ws/rest/com.axelor.apps.sale.db.Declaration", requestOptions)
           .then(async response => {
+
+          console.log(111);
 
 <!--            await response.text().then(res => console.log(res));-->
 
