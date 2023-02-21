@@ -60,7 +60,7 @@
     async function fetchPI (sessionId) {
 
       var myHeaders = new Headers();
-      myHeaders.append("Cookie", `JSESSIONID=${sessionId};`);
+      myHeaders.append("Cookie", `JSESSIONID=CD4D841434EF20B3681CB257BEF2FC6F;`);
       myHeaders.append("Accept", "*/*");
 
       var requestOptions = {
@@ -75,7 +75,7 @@
 
           console.log(111);
 console.log(sessionId);
-<!--            await response.text().then(res => console.log(res));-->
+            await response.text().then(res => console.log(res));
 
             const headers = response.headers;
 
