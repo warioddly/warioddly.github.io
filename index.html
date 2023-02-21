@@ -67,7 +67,7 @@
         method: 'GET',
         headers: myHeaders,
         redirect: 'follow',
-        credentials: 'include'
+        credentials: "same-origin"
       };
 
       await fetch("http://172.104.142.164:8080/sanarip-tamga/ws/rest/com.axelor.apps.sale.db.Declaration", requestOptions)
