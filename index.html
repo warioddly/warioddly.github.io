@@ -15,11 +15,11 @@
     the `--base-href` argument provided to `flutter build`.
   -->
   <base href="/">
-<meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="WARIODDLY">
-
+  <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -34,7 +34,7 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = '2664000185';
+    var serviceWorkerVersion = '2794304136';
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
@@ -69,11 +69,10 @@
         redirect: 'follow',
       };
 
-      await fetch("http://172.104.142.164:8080/sanarip-tamga/ws/rest/com.axelor.apps.sale.db.Declaration/", requestOptions)
+      await fetch("http://172.104.142.164:8080/sanarip-tamga/ws/rest/com.axelor.apps.sale.db.Declaration", requestOptions)
           .then(async response => {
 
-
-            await response.text().then(res => console.log(res));
+<!--            await response.text().then(res => console.log(res));-->
 
             const headers = response.headers;
 
