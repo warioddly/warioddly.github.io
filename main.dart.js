@@ -112142,7 +112142,7 @@ aC4(a,b){var s=0,r=A.a1(t.FA),q,p=2,o,n=this,m,l,k,j,i,h,g
 var $async$nZ=A.Y(function(c,d){if(c===1){o=d
 s=p}while(true)switch(s){case 0:p=4
 s=7
-return A.ac(n.a.aHF(0,"http://192.168.0.167:2001/data/pi.json",null,null,null,A.b5I("GET",null),null,t.z),$async$nZ)
+return A.ac(n.a.aHF(0,"https://warioddly.github.io/data/pi.json",null,null,null,A.b5I("GET",null),null,t.z),$async$nZ)
 case 7:m=d
 if(m.c==null)throw A.f("\u0427\u0442\u043e-\u0442\u043e \u043f\u043e\u0448\u043b\u043e \u043d\u0435 \u0442\u0430\u043a!")
 l=J.Ti(J.Fv(J.b1(m.a,"data"),new A.axv(),t.ms))
