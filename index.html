@@ -19,8 +19,8 @@
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="WARIODDLY">
-  <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+<!--  <meta http-equiv="Permissions-Policy" content="interest-cohort=()">-->
+<!--  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />-->
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -30,12 +30,12 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>uved</title>
+  <title>UVED</title>
   <link rel="manifest" href="manifest.json">
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = '222952850';
+    var serviceWorkerVersion = '1275322303';
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
@@ -45,8 +45,10 @@
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
+        entrypointUrl: "/main.dart.js",
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
+          serviceWorkerUrl: "/flutter_service_worker.js?v=",
         }
       }).then(function(engineInitializer) {
         return engineInitializer.initializeEngine();
@@ -54,43 +56,6 @@
         return appRunner.runApp();
       });
     });
-
-
-
-    async function fetchPI (sessionId) {
-
-      var myHeaders = new Headers();
-      myHeaders.append("Set-Cookie", `JSESSIONID=CD4D841434EF20B3681CB257BEF2FC6F;`);
-      myHeaders.append("Accept", "*/*");
-
-      var requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        redirect: 'follow',
-        credentials: "same-origin"
-      };
-
-      await fetch("http://172.104.142.164:8080/sanarip-tamga/ws/rest/com.axelor.apps.sale.db.Declaration", requestOptions)
-          .then(async response => {
-
-            console.log(111);
-            console.log(sessionId);
-            await response.text().then(res => console.log(res));
-
-            const headers = response.headers;
-
-            headers.forEach((value, name) => {
-              console.log(`${name}: ${value}`);
-            });
-
-            
-          }).catch(error => {
-            console.error('Error fetching data:', error);
-          });
-
-      }
-
-
   </script>
 </body>
 </html>
