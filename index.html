@@ -35,14 +35,157 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = '3331202735';
+    var serviceWorkerVersion = '364952856';
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
 </head>
 <body>
+
+  <div id="app-preloader">
+    <img class="preloader-logo" src="\icons\Icon-512.png" alt="uved-logo">
+    <div class="preloader-title"></div>
+    <div class="preloader-spinner">
+      <svg class="preloader-spinner-icon" viewBox="0 0 24 24">
+        <path d="M 22.49772,12.000001 A 10.49772,10.497721 0 0 1 12,22.497722 10.49772,10.497721 0 0 1 1.5022797,12.000001 10.49772,10.497721 0 0 1 12,1.5022797 10.49772,10.497721 0 0 1 22.49772,12.000001 Z" fill="none" stroke-linecap="round" />
+      </svg>
+    </div>
+  </div>
+
+  <style>
+
+    body {
+      margin: 0;
+    }
+    
+    body.loaded .app-preloader {
+      display: none;
+    }
+
+    :root {
+      --preload-color-background: #212121;
+      --preload-color-foreground: #ffffff;
+      --preload-color-accent: #03a9f4;
+      --preload-gap: 36px;
+      --preload-icon-size: 228px;
+      --preload-font: 2em Roboto, arial, sans-serif;
+      --preload-title: 'UVED';
+      --preload-spinner-size: 32px;
+      --preload-spinner-width: 3px;
+      --preload-font-size: 40px;
+    }
+
+    @media (max-width: 767px) {
+      :root {
+        --preload-font-size: 60px;
+        --preload-icon-size: 328px;
+        --preload-spinner-size: 82px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      :root {
+        --preload-font-size: 60px;
+        --preload-icon-size: 328px;
+        --preload-spinner-size: 82px;
+      }
+    }
+
+    #app-preloader {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      gap: var(--preload-gap);
+      justify-content: center;
+      align-items: center;
+      background: var(--preload-color-background);
+      color: var(--preload-color-foreground);
+      font: var(--preload-font);
+      transition: .3s ease-in-out;
+    }
+
+    #app-preloader .preloader-logo {
+      width: var(--preload-icon-size);
+      height: var(--preload-icon-size);
+      color: var(--preload-color-accent);
+      filter: opacity(0);
+      animation: preloader-logo-anim .3s .5s ease-out forwards;
+    }
+
+    #app-preloader .preloader-title:before {
+      content: var(--preload-title);
+      font-size: var(--preload-font-size);
+      filter: opacity(0);
+      animation: preloader-title-anim .3s .6s ease-out forwards;
+    }
+
+    #app-preloader .preloader-spinner {
+      position: fixed;
+      bottom: var(--preload-gap);
+      left: calc(50vw - calc(var(--preload-spinner-size) / 2px));
+      width: var(--preload-spinner-size);
+      height: var(--preload-spinner-size);
+      animation: preloader-spinner .5s linear infinite;
+    }
+
+    #app-preloader .preloader-spinner .preloader-spinner-icon {
+      width: var(--preload-spinner-size);
+      height: var(--preload-spinner-size);
+      stroke: var(--preload-color-foreground);
+      stroke-width: var(--preload-spinner-width);
+      stroke-dasharray: 314%, 314%;
+      animation: preloader-spinner-icon-anim 1s linear infinite alternate;
+    }
+
+    @keyframes preloader-logo-anim {
+      0% {
+        filter: opacity(0);
+        transform: translateY(-30px);
+      }
+
+      100% {
+        filter: opacity(1);
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes preloader-title-anim {
+      0% {
+        filter: opacity(0);
+      }
+
+      100% {
+        filter: opacity(1);
+      }
+    }
+
+    @keyframes preloader-spinner {
+      0% {
+        transform: rotate(0);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes preloader-spinner-icon-anim {
+      0% {
+        stroke-dasharray: 0%, 314%;
+      }
+
+      100% {
+        stroke-dasharray: 314%, 314%;
+      }
+    }
+  </style>
+
   <script>
     window.addEventListener('load', function(ev) {
+
+
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
         entrypointUrl: "/main.dart.js",
@@ -55,6 +198,11 @@
       }).then(function(appRunner) {
         return appRunner.runApp();
       });
+      
+
+      let preloader = document.querySelector('body');
+      preloader.classList.add('loaded');
+
     });
   </script>
 </body>
