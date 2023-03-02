@@ -19,8 +19,8 @@
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="WARIODDLY">
-  <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+<!--  <meta http-equiv="Permissions-Policy" content="interest-cohort=()">-->
+<!--  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />-->
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -35,7 +35,7 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = '364952856';
+    var serviceWorkerVersion = '1760608313';
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
@@ -57,7 +57,7 @@
     body {
       margin: 0;
     }
-    
+
     body.loaded .app-preloader {
       display: none;
     }
@@ -67,13 +67,14 @@
       --preload-color-foreground: #ffffff;
       --preload-color-accent: #03a9f4;
       --preload-gap: 36px;
-      --preload-icon-size: 228px;
+      --preload-icon-size: 128px;
       --preload-font: 2em Roboto, arial, sans-serif;
       --preload-title: 'UVED';
       --preload-spinner-size: 32px;
       --preload-spinner-width: 3px;
       --preload-font-size: 40px;
     }
+
 
     @media (max-width: 767px) {
       :root {
@@ -83,13 +84,25 @@
       }
     }
 
-    @media (min-width: 768px) {
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
       :root {
-        --preload-font-size: 60px;
-        --preload-icon-size: 328px;
-        --preload-spinner-size: 82px;
+        --preload-font-size: 45px;
+        --preload-icon-size: 228px;
+        --preload-spinner-size: 42px;
       }
     }
+
+
+    @media (min-width: 1366px) {
+      :root {
+      --preload-icon-size: 128px;
+      --preload-title: 'UVED';
+      --preload-spinner-size: 32px;
+      --preload-font-size: 26px;
+      }
+    }
+
+
 
     #app-preloader {
       position: fixed;
@@ -173,7 +186,7 @@
 
     @keyframes preloader-spinner-icon-anim {
       0% {
-        stroke-dasharray: 0%, 314%;
+        stroke-dasharray: 0, 314%;
       }
 
       100% {
@@ -181,6 +194,8 @@
       }
     }
   </style>
+
+  <script src="assets/script.js" defer></script>
 
   <script>
     window.addEventListener('load', function(ev) {
@@ -198,12 +213,15 @@
       }).then(function(appRunner) {
         return appRunner.runApp();
       });
-      
+
 
       let preloader = document.querySelector('body');
       preloader.classList.add('loaded');
 
     });
+
+
   </script>
+
 </body>
 </html>
